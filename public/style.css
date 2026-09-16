@@ -1,0 +1,819 @@
+/* ============================================================
+   Waypoint — design tokens
+   Palette: deep pine-charcoal ground, trail-blaze amber accent,
+   moss green for completion, muted rust for missed/danger.
+   Type: Fjalla One (condensed, signage) for headings/numbers,
+   Karla (humanist sans) for body and UI text.
+   ============================================================ */
+
+:root {
+  --bg: #1b1f1c;
+  --surface: #242a20;
+  --surface-raised: #2c3325;
+  --border: #3a402f;
+  --border-soft: #313626;
+
+  --ink: #ede8dc;
+  --ink-muted: #a3a894;
+  --ink-faint: #767c68;
+
+  --accent: #e08d3c;
+  --accent-strong: #c9761f;
+  --accent-wash: rgba(224, 141, 60, 0.14);
+
+  --moss: #7fa06b;
+  --moss-wash: rgba(127, 160, 107, 0.16);
+
+  --danger: #c9583a;
+  --danger-wash: rgba(201, 88, 58, 0.16);
+
+  --font-display: "Fjalla One", "Arial Narrow", sans-serif;
+  --font-body: "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(224, 141, 60, 0.07), transparent 60%);
+  background-repeat: no-repeat;
+}
+
+.hidden { display: none !important; }
+
+/* ---------------------------------------------------------
+   Layout shell
+   --------------------------------------------------------- */
+
+.app {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+section {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px 20px 22px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin: 0 0 14px;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------
+   Header / brand
+   --------------------------------------------------------- */
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.brand-sub {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.username-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  margin-right: 4px;
+}
+
+.username-display svg {
+  width: 14px;
+  height: 14px;
+}
+
+.icon-text-btn.active-toggle {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-wash);
+}
+
+.icon-text-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink-muted);
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.icon-text-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.icon-text-btn:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.progress-summary {
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  margin: 10px 0 12px;
+}
+
+.stats-bar {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 0.84rem;
+  color: var(--ink);
+}
+
+.stats-bar span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stats-bar svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------
+   Reminder time setting
+   --------------------------------------------------------- */
+
+.reminder-settings {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+
+.reminder-settings label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reminder-settings svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+
+.reminder-settings input[type="time"] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  border-radius: var(--radius-sm);
+  padding: 5px 8px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+}
+
+.reminder-save-status {
+  color: var(--moss);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   Morning reminder banner
+   --------------------------------------------------------- */
+
+.morning-reminder {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--accent-wash);
+  border: 1px solid var(--accent);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.reminder-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.reminder-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.reminder-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.reminder-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.reminder-list {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+.reminder-dismiss {
+  background: transparent;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+
+.reminder-dismiss svg {
+  width: 14px;
+  height: 14px;
+}
+
+.reminder-dismiss:hover {
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------
+   Trail progress bar + tally grid ("heatmap")
+   --------------------------------------------------------- */
+
+.progress-bar-wrap section,
+.progress-bar-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 18px 20px 20px;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-soft);
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--border) 0,
+    var(--border) 1px,
+    transparent 1px,
+    transparent 24px
+  );
+  overflow: visible;
+}
+
+.progress-fill {
+  position: relative;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.progress-marker {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-wash);
+}
+
+.heatmap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 18px;
+}
+
+.heatmap .day {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+}
+
+.heatmap .day[data-level="0"] { background: var(--surface-raised); }
+.heatmap .day[data-level="1"] { background: rgba(127, 160, 107, 0.35); border-color: var(--moss); }
+.heatmap .day[data-level="2"] { background: rgba(127, 160, 107, 0.65); border-color: var(--moss); }
+.heatmap .day[data-level="3"] { background: var(--moss); border-color: var(--moss); }
+
+/* ---------------------------------------------------------
+   Add-habit form
+   --------------------------------------------------------- */
+
+#habit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#habit-name {
+  padding: 11px 13px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+#habit-name:focus,
+.edit-name:focus,
+.auth-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-wash);
+}
+
+.type-choice {
+  display: flex;
+  gap: 18px;
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+.type-choice label,
+.days-picker label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.days-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+button {
+  font-family: var(--font-body);
+}
+
+#habit-form button[type="submit"] {
+  align-self: flex-start;
+  background: var(--accent);
+  color: #1b1300;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#habit-form button[type="submit"]:hover {
+  background: var(--accent-strong);
+}
+
+/* ---------------------------------------------------------
+   Today section / filter tabs
+   --------------------------------------------------------- */
+
+.today-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.today-head h2 { margin: 0; }
+
+.filter-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--bg);
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  color: var(--ink-faint);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #1b1300;
+}
+
+/* ---------------------------------------------------------
+   Habit list — logbook entries
+   --------------------------------------------------------- */
+
+.habit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.habit-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  transition: border-color 0.15s;
+}
+
+.habit-item.completed {
+  border-left-color: var(--moss);
+  background: var(--moss-wash);
+}
+
+.habit-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.habit-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.habit-check {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.habit-name {
+  font-weight: 600;
+  font-size: 0.96rem;
+}
+
+.habit-name.completed-text {
+  text-decoration: line-through;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.habit-meta {
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+
+.habit-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+.streak-badge svg { width: 13px; height: 13px; }
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--ink-faint);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+}
+
+.icon-btn svg { width: 15px; height: 15px; }
+
+.icon-btn:hover {
+  color: var(--ink);
+  background: var(--surface-raised);
+}
+
+.delete-btn:hover {
+  color: var(--danger);
+}
+
+.empty-state {
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+/* ---- mini history pills ---- */
+
+.habit-history {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.mini-history {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.mini-pill {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+.mini-pill[data-state="done"] { background: var(--moss); border-color: var(--moss); }
+.mini-pill[data-state="missed"] { background: var(--danger-wash); border-color: var(--danger); }
+.mini-pill[data-state="off"] { background: transparent; opacity: 0.35; }
+
+/* ---- inline edit form ---- */
+
+.habit-edit-form {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-name {
+  padding: 9px 11px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.save-edit-btn {
+  background: var(--accent);
+  color: #1b1300;
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+.cancel-edit-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink-muted);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+/* ---------------------------------------------------------
+   Auth pages (login / signup)
+   --------------------------------------------------------- */
+
+.auth-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  background-image:
+    radial-gradient(ellipse 900px 600px at 50% -10%, rgba(224, 141, 60, 0.08), transparent 60%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 30px 26px;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.auth-brand .brand-mark {
+  width: 20px;
+  height: 20px;
+}
+
+.auth-brand .brand-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+}
+
+.auth-subtitle {
+  margin: 0 0 22px;
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.auth-form input {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.auth-form button {
+  align-self: stretch;
+  text-align: center;
+  margin-top: 4px;
+  background: var(--accent);
+  color: #1b1300;
+  border: none;
+  padding: 11px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background: var(--accent-strong);
+}
+
+.auth-error {
+  color: var(--danger);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.auth-switch {
+  margin: 20px 0 0;
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--ink-faint);
+}
+
+.auth-switch a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   Accessibility / responsive
+   --------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .app { padding: 20px 14px 60px; }
+  .brand-name { font-size: 1.25rem; }
+  .habit-main { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+
+.specific-date-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.specific-date-picker input[type="date"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}

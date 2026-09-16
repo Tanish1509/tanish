@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Log in — Waypoint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l5 10-5 10-5-10z"/></svg>
+      <span class="brand-name">Waypoint</span>
+    </div>
+    <p class="auth-subtitle">Log in to continue your 75-day challenge</p>
+
+    <form id="login-form" class="auth-form">
+      <label>
+        Username
+        <input type="text" id="username" autocomplete="username" required />
+      </label>
+      <label>
+        Password
+        <input type="password" id="password" autocomplete="current-password" required />
+      </label>
+      <p id="auth-error" class="auth-error hidden"></p>
+      <button type="submit">Log in</button>
+    </form>
+
+    <p class="auth-switch">New here? <a href="/signup.html">Create an account</a></p>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      submitAuth("/api/login", {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "habit-tracker",
+  "version": "1.0.0",
+  "description": "A 75-day habit tracker — daily and weekday-only habits, today view, streaks, and progress.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "bcryptjs": "^2.4.3",
+    "cookie-session": "^2.1.0",
+    "better-sqlite3": "^13.0.3"
+  }
+}

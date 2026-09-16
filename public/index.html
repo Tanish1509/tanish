@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waypoint — 75-Day Habit Challenge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="header-top">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l5 10-5 10-5-10z"/></svg>
+          <div class="brand-text">
+            <span class="brand-name">Waypoint</span>
+            <span class="brand-sub">75-day habit challenge</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <span id="username-display" class="username-display"></span>
+          <button id="notify-btn" class="icon-text-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+            <span id="notify-btn-label">Reminders off</span>
+          </button>
+          <button id="export-btn" class="icon-text-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+            Backup
+          </button>
+          <button id="logout-btn" class="icon-text-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+            Log out
+          </button>
+        </div>
+      </div>
+      <div id="progress-summary" class="progress-summary">Loading…</div>
+      <div id="stats-bar" class="stats-bar"></div>
+    </header>
+
+    <div class="reminder-settings">
+      <label for="reminder-time-input">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        Remind me from
+      </label>
+      <input type="time" id="reminder-time-input" />
+      <span id="reminder-save-status" class="reminder-save-status hidden">Saved</span>
+    </div>
+
+    <div id="morning-reminder" class="morning-reminder hidden"></div>
+
+    <section class="progress-bar-wrap">
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill" style="width:0%">
+          <span class="progress-marker"></span>
+        </div>
+      </div>
+      <div id="heatmap" class="heatmap"></div>
+    </section>
+
+    <section class="add-habit">
+      <h2>Add a habit</h2>
+      <form id="habit-form">
+        <input type="text" id="habit-name" placeholder="e.g. Drink 3L water" required />
+
+        <div class="type-choice">
+          <label><input type="radio" name="type" value="daily" checked /> Every day</label>
+          <label><input type="radio" name="type" value="custom" /> Specific weekdays</label>
+          <label><input type="radio" name="type" value="specific" /> Specific date</label>
+        </div>
+
+        <div id="days-picker" class="days-picker hidden">
+          <label><input type="checkbox" value="1" /> Mon</label>
+          <label><input type="checkbox" value="2" /> Tue</label>
+          <label><input type="checkbox" value="3" /> Wed</label>
+          <label><input type="checkbox" value="4" /> Thu</label>
+          <label><input type="checkbox" value="5" /> Fri</label>
+          <label><input type="checkbox" value="6" /> Sat</label>
+          <label><input type="checkbox" value="0" /> Sun</label>
+        </div>
+
+        <div id="specific-date-picker" class="specific-date-picker hidden">
+          <label for="specific-date">Task date</label>
+          <input type="date" id="specific-date" />
+        </div>
+
+        <button type="submit">Add habit</button>
+      </form>
+    </section>
+
+    <section class="today">
+      <div class="today-head">
+        <h2 id="today-heading">Today</h2>
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="pending" type="button">Pending</button>
+          <button class="filter-btn" data-filter="done" type="button">Done</button>
+        </div>
+      </div>
+      <ul id="habit-list" class="habit-list"></ul>
+      <p id="empty-state" class="empty-state hidden">Nothing on the trail today. Add a habit above.</p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

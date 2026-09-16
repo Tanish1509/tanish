@@ -1,0 +1,7 @@
+node_modules/
+habit-tracker.db
+habit-tracker.db-shm
+habit-tracker.db-wal
+data.json
+*.migrated
+.env
